@@ -1,0 +1,13 @@
+# Gitleaks ignore file for false positives
+
+# Example credentials in documentation (not real secrets)
+CICD.md:*
+terraform.tfvars.example:*
+README.md:*
+
+# GitHub Actions workflow files (contain variable references, not actual secrets)
+.github/workflows/*.yml:*
+
+# Module documentation examples
+modules/*/README.md:*
+

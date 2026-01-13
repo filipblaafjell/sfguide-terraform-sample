@@ -1,0 +1,22 @@
+---
+# TFSec configuration
+# Excludes checks that are false positives or not applicable
+
+exclude:
+  # Snowflake-specific exclusions
+  - AVD-AWS-0057  # S3 bucket encryption (not using S3)
+  - AVD-AWS-0086  # S3 logging (not using S3)
+  - AVD-AWS-0089  # S3 versioning (not using S3)
+  - AVD-AWS-0132  # S3 public access (not using S3)
+  
+  # General exclusions for this project
+  - general-secrets-sensitive-in-attribute  # We mark outputs as sensitive
+
+severity_overrides:
+  LOW: LOW
+  MEDIUM: MEDIUM
+  HIGH: HIGH
+  CRITICAL: CRITICAL
+
+minimum_severity: MEDIUM
+

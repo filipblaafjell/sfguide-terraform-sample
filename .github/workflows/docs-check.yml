@@ -1,0 +1,68 @@
+name: Documentation Check
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+    paths:
+      - '**.md'
+      - '**.tf'
+
+jobs:
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Markdown Lint
+        uses: DavidAnson/markdownlint-cli2-action@v15
+        with:
+          globs: '**/*.md'
+          config: |
+            {
+              "default": true,
+              "MD013": false,
+              "MD033": false,
+              "MD041": false
+            }
+
+  terraform-docs-check:
+    name: Terraform Docs Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check for README in modules
+        run: |
+          for dir in modules/*/; do
+            if [ ! -f "${dir}README.md" ]; then
+              echo "❌ Missing README.md in ${dir}"
+              exit 1
+            else
+              echo "✅ Found README.md in ${dir}"
+            fi
+          done
+
+      - name: Verify documentation completeness
+        run: |
+          # Check that main README exists and has content
+          if [ ! -s README.md ]; then
+            echo "❌ README.md is empty or missing"
+            exit 1
+          fi
+          
+          # Check for key sections
+          for section in "Architecture" "Getting Started" "Prerequisites"; do
+            if ! grep -qi "$section" README.md; then
+              echo "⚠️  Warning: '$section' section might be missing from README.md"
+            fi
+          done
+          
+          echo "✅ Documentation checks passed"
+

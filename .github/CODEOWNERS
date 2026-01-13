@@ -1,0 +1,23 @@
+# Code Owners for Snowflake Terraform Repository
+# These owners will be requested for review when someone opens a pull request
+
+# Global owners - apply to everything unless overridden
+* @filipblaafjell
+
+# Terraform infrastructure files
+*.tf @filipblaafjell
+*.tfvars @filipblaafjell
+
+# Module owners - require review for module changes
+/modules/ @filipblaafjell
+
+# Documentation
+*.md @filipblaafjell
+
+# CI/CD workflows - require careful review
+/.github/workflows/ @filipblaafjell
+
+# Critical configuration files
+/providers.tf @filipblaafjell
+/variables.tf @filipblaafjell
+
