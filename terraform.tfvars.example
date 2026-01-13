@@ -1,0 +1,29 @@
+# Copy this file to terraform.tfvars and fill in your values
+# DO NOT commit terraform.tfvars to git!
+
+organization_name = "your_org_name"
+account_name      = "your_account_name"
+terraform_user    = "TERRAFORM_SVC"
+private_key_path  = "~/.ssh/snowflake_tf_snow_key.p8"
+
+environment = "production"
+
+warehouse_size        = "SMALL"
+warehouse_auto_suspend = 60
+
+# Swimlanes configuration (optional - defaults are provided)
+# swimlanes = {
+#   master = {
+#     environments = ["prod", "dev"]
+#     description  = "Master swimlane for shared resources"
+#   }
+#   finance = {
+#     environments = ["prod", "dev"]
+#     description  = "Finance department swimlane"
+#   }
+#   marketing = {
+#     environments = ["prod", "dev"]
+#     description  = "Marketing department swimlane"
+#   }
+# }
+
