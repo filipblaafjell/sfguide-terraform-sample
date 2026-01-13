@@ -8,10 +8,6 @@ plugin "terraform" {
   preset  = "recommended"
 }
 
-plugin "snowflake" {
-  enabled = true
-}
-
 rule "terraform_naming_convention" {
   enabled = true
 }

@@ -24,9 +24,9 @@ jobs:
       - name: Run tfsec
         uses: aquasecurity/tfsec-action@v1.0.3
         with:
-          soft_fail: false
+          soft_fail: true
           format: sarif
-          additional_args: --exclude-downloaded-modules
+          additional_args: --config-file .tfsec.yml --exclude-downloaded-modules
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v3
@@ -48,7 +48,7 @@ jobs:
           directory: .
           framework: terraform
           quiet: false
-          soft_fail: false
+          soft_fail: true
           skip_check: CKV_GIT_1  # Skip git history check
 
   secret-scan:

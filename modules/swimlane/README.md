@@ -47,9 +47,9 @@ module "finance_prod" {
 
 | Name | Description |
 |------|-------------|
-| database warehouse |
-| read_role_name | Name of the read ro_name | Name of the created database |
-| warehouse_name | Name of the createdle |
+| database_name | Name of the created database |
+| warehouse_name | Name of the created warehouse |
+| read_role_name | Name of the read role |
 | write_role_name | Name of the write role |
 | schema_names | Map of created schema names |
 | schemas_fully_qualified | Fully qualified schema names |
@@ -59,7 +59,7 @@ module "finance_prod" {
 ```
 SYSADMIN
   ├── {SWIMLANE}_{ENV}_WRITE_ROLE
-  │     └──_RO {SWIMLANE}_{ENV}_READLE
+  │     └── {SWIMLANE}_{ENV}_READ_ROLE
   └── {SWIMLANE}_{ENV}_READ_ROLE
 ```
 

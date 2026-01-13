@@ -106,7 +106,15 @@ jobs:
 
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
-        run: exit 1
+        run: |
+          echo "⚠️ Terraform plan failed."
+          echo "This is expected if:"
+          echo "  - Snowflake credentials are not configured in GitHub Secrets"
+          echo "  - Snowflake account is not active"
+          echo "  - Network connectivity issues"
+          echo ""
+          echo "To fix: Configure SNOWFLAKE_ORG, SNOWFLAKE_ACCOUNT, SNOWFLAKE_USER, and SNOWFLAKE_PRIVATE_KEY secrets"
+          exit 1
 
       - name: Upload Plan Artifact
         uses: actions/upload-artifact@v4

@@ -15,7 +15,7 @@ terraform {
 locals {
   db_name = upper("${var.swimlane_name}_${var.environment}_db")
   wh_name = upper("${var.swimlane_name}_${var.environment}_wh")
-  
+
   read_role_name  = upper("${var.swimlane_name}_${var.environment}_read_role")
   write_role_name = upper("${var.swimlane_name}_${var.environment}_write_role")
 }
